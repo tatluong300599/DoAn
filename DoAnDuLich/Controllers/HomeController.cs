@@ -68,6 +68,7 @@ namespace DoAnDuLich.Controllers
             }
             
         }
+
         #region Hien Thi Home
         public ActionResult _PartialTourTrongNuoc()
         {

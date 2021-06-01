@@ -1,0 +1,97 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HuyenTrangTravel</title>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Govihar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Custom Theme files -->
+    <link href="~/Content/Css/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="~/Content/Css/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="~/Content/Css/css/flexslider.css" type="text/css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="~/Content/Css/css/JFFormStyle-1.css" />
+    <!-- js -->
+    <script src="~/Content/Css/js/jquery.min.js"></script>
+    <script src="~/Content/Css/js/modernizr.custom.js"></script>
+    <!-- //js -->
+    <!-- fonts -->
+    <!-- ajax -->
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    <!--pop-up-->
+    <script src="~/Content/Css/js/menu_jquery.js"></script>
+    <!--//pop-up-->
+</head>
+<body>
+    <!--header-->
+    @Html.Partial("_PartialHeader")
+    <!--//header-->
+    <div class="container">
+        <div class="banner holidays-banner">
+            <div class="container">
+                <div class="deals-info">
+                    <h2>Huyen Trang Travel</h2>
+                </div>
+            </div>
+        </div>
+        <div class="faqs-top-grids">
+            <div class="blog-grids">
+                <div class="col-md-2 blog-left">
+                    <div class="Categories">
+                        <h3>Chức Năng</h3>
+                        <ul>
+                            <li><a href="@Url.Action("ThongTinCaNhan","TaiKhoan")">Profile</a></li>
+                            <li><a href="@Url.Action("DonChuaDuyet","DatTour")">Đang Chờ Duyệt</a></li>
+                            <li><a href="@Url.Action("DonChuaThanhToan","DatTour")">Chưa Thanh Toán</a></li>
+                            <li><a href="@Url.Action("LichSuDatTour","DatTour")">Lịch Sử Đặt Tour</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10 blog-right">
+                    @RenderBody()
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    @Html.Partial("_PartialFooter")
+    <script defer src="~/Content/Css/js/jquery.flexslider.js"></script>
+    <script src="~/Content/Css/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script src="~/Content/Css/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="~/Content/Css/js/script.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

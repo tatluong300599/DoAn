@@ -1,0 +1,109 @@
+﻿@using DoAnDuLich.Models
+@model CTTour
+@{
+    ViewBag.Title = "DatTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="banner holidays-banner">
+        <div class="container">
+            <div class="deals-info">
+                <h2>Đặt Tour</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="c-rooms">
+        <div class="p-table">
+            <div class="p-table-grids">
+                <div class="col-md-3 p-table-grid">
+                    <div class="p-table-grad-heading">
+                        <h6>Tour</h6>
+                    </div>
+                    <div class="p-table-grid-info">
+                        <a href="#"><img src="~/Image/@Model.Tour.Anh" alt=""></a>
+                        <div class="room-basic-info">
+                            <a href="@Url.Action("ChiTietTour", "Tour", new { maTour = Model.MaTour })">@Model.Tour.TenTour</a>
+                            <p>@Model.Tour.GioiThieu</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 p-table-grid">
+                    <div class="p-table-grad-heading">
+                        <h6>Chi tiết Tour</h6>
+                    </div>
+                    <div class="rate-features">
+                        <ul>
+                            <li>Ngày xuất phát: @Model.NgayXP.ToString("dd/MM/yyyy")</li>
+                            <li><a href="@Url.Action("ChiTietTour", "Tour", new { maTour = Model.MaTour })">Chọn Ngày Khác</a></li>
+                            <li>Số Ngày: @Model.Tour.SoNgay</li>
+                            <li>Số chỗ còn nhận: @Model.SoLuongCho</li>
+                            <li>Giá: @string.Format("{0:0,0}", Model.Tour.Gia*(100-(Model.KhuyenMai.PhanTram))/100) VND</li>
+                        </ul>
+                        <p style="color:red">Lưu ý:Trẻ em dưới 2 tuổi được miễn phí tham gia Tour cùng cha mẹ!<br />Vì vậy không thêm số lượng trẻ dưới 2 tuổi vào tổng số lượng.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-table-grid">
+                    <div class="p-table-grad-heading">
+                        <h6>Thông Tin Đặt Tour</h6>
+                    </div>
+                    <div class="avg-rate">
+                        <div class="form-group">
+                            <span>Tổng số lượng khách</span>
+                            <input type="number" id="tongKhach" min="1" max="@Model.SoLuongCho" width="20" placeholder="Số lượng khách tham gia Tour" required/>
+                        </div>
+                        <div class="form-group">
+                            <span> Có Trẻ Em từ 3-12 tuổi</span>
+                            <input type="number" id="TreEm" min="0" max="@Model.SoLuongCho" placeholder="Trẻ em từ 3-12 tuổi được giảm 25% giá Tour" required/>
+                        </div>
+                        <div class="form-group">
+                            <span>Ghi Chú</span>
+                            <textarea id="GhiChu" rows="4" cols="40" placeholder="Số lượng trẻ dưới 2 tuổi - Các ghi chú khác"></textarea>
+                        </div>
+                        <h4 style="color:red">Lựa chọn hình thức thanh toán</h4>
+                        <input type="radio" id="ThanhToan" name="ThanhToan" value="ThanhToanOnline" checked/><span>Thanh Toán Online</span>
+                        <input type="radio" id="ThanhToan" name="ThanhToan" value="ChuyenKhoan"/><span>Chuyển Khoản</span>
+                        <input type="radio" id="ThanhToan" name="ThanhToan" value="TrucTiep"/><span>Trực tiếp</span>
+                    </div>
+                </div>
+                <div class="col-md-2 p-table-grid">
+                    <div class="p-table-grad-heading">
+                        <h6>Book</h6>
+                    </div>
+                    <div class="book-button-column">
+                        <input type="button" value="Đặt Tour" id="datTour" class="btn btn-success" />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $("#datTour").click(function () {
+        var tongSL = document.getElementById("tongKhach").value;
+        var treEm = document.getElementById("TreEm").value;
+        var ghiChu = document.getElementById("GhiChu").value;
+        var thanhToan = document.getElementById("ThanhToan").value;
+            $.ajax({
+                type: "POST",
+                data: { maTour:@Model.MaTour, ngayXP: "@Model.NgayXP.ToString()", tongSL: tongSL, treEm: treEm, ghiChu: ghiChu, thanhToan: thanhToan },
+                url: "@Url.Action("DatTour","DatTour")",
+                dataType:"json",
+                success: function (data) {
+                    if (data.status == 1) {
+                        alert("Đặt Tour Thành Công");
+                        window.location.href = "@Url.Action("DonVuaDat","DatTour")";
+                    } else if (data.status == 2) {
+                        alert("Ban cần thanh toán các tour đã đặt trước khi đặt Tour mới!.");
+                        window.location.href = "@Url.Action("DonChuaThanhToan","DatTour")";
+                    } else {
+                        alert("Bạn cần đăng nhập để có thể xử dụng chức năng này.");
+                        window.location.href = "@Url.Action("ChiTietTour","Tour",new {maTour=Model.MaTour})";
+                    }
+                }
+            })
+        })
+</script>

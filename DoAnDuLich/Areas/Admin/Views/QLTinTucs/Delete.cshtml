@@ -1,0 +1,71 @@
+﻿@model DoAnDuLich.Models.TinTuc
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3 style="color:red">Bạn có chắc chắn muốn xóa tin này khỏi bảng tin không?</h3>
+<div>
+    <h4>TinTuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TGDangTin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGDangTin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiThieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiThieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiTinTuc.TenLoaiTin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTinTuc.TenLoaiTin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xác nhận Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở về", "Index",null,new {@class="btn btn-primary" })
+        </div>
+    }
+</div>

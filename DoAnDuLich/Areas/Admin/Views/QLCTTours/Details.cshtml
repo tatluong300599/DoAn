@@ -1,0 +1,51 @@
+﻿@model DoAnDuLich.Models.CTTour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTTour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongCho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongCho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tour.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tour.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai.TenKM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai.TenKM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

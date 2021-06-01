@@ -1,0 +1,36 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<TinTuc>
+<div class="news-grids-bottom">
+    <!-- date -->
+    <div id="design" class="date">
+        <div id="cycler">
+            @foreach (var item in Model.Take(6))
+            {
+                <div class="date-text">
+                    <a href="@Url.Action("ChiTietTin","TinTuc",new {maTin=item.MaTin })">@item.TieuDe</a>
+                    @if (item.GioiThieu.Length > 100)
+                    {
+                        <p>@Html.Raw(item.GioiThieu.Substring(0, 96)) ...</p>
+                    }
+                    else
+                    {
+                        <p>@item.GioiThieu</p>
+                    }
+                </div>
+            }
+        </div>
+        <script>
+            function cycle($item, $cycler) {
+                setTimeout(cycle, 2000, $item.next(), $cycler);
+
+                $item.slideUp(1000, function () {
+                    $item.appendTo($cycler).show();
+                });
+
+            }
+            cycle($('#cycler div:first'), $('#cycler'));
+        </script>
+    </div>
+    <!-- //date -->
+</div>
+

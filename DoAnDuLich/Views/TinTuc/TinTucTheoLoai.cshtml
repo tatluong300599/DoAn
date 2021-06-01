@@ -1,0 +1,55 @@
+﻿@using DoAnDuLich.Models
+@using DoAnDuLich.Models
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.PagedList<TinTuc>
+@{
+    ViewBag.Title = "TinTucTheoLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="banner holidays-banner">
+    <div class="container">
+        <div class="deals-info">
+            <h2>@ViewBag.TenLoaiTin</h2>
+        </div>
+    </div>
+</div>
+<div class="faqs-top-grids">
+    <div class="blog-grids">
+        <div class="col-md-8 blog-left">
+            @foreach (var item in Model)
+            {
+                <div class="blog-left-grid">
+                    <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; @item.TGDangTin &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+                    <a href="@Url.Action("ChiTietTin","TinTuc",new {maTin=item.MaTin })"><img src="~/Image/@item.Anh" height="200" alt=""></a>
+                    <div class="blog-left-right">
+                        <a href="@Url.Action("ChiTietTin","TinTuc",new {maTin=item.MaTin })">@item.TieuDe</a>
+                        @if (item.NoiDung.Length <= 150)
+                        {
+                            <p>
+                                @item.NoiDung
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                @item.NoiDung.Substring(0, 150) ...
+                            </p>
+                        }
+
+                    </div>
+                </div>
+
+            }
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            <hr />
+            @Html.PagedListPager(Model, page => Url.Action("ListTinTuc", new { @page = page }))
+        </div>
+        <div class="col-md-4 blog-right">
+            @Html.Action("_PartialTimkiem", "TinTuc")
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

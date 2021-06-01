@@ -1,0 +1,54 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<Tour>
+@{
+    ViewBag.Title = "KQTimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h3>@ViewBag.KetQua</h3>
+    <hr />
+</div>
+@Html.Action("_PartialTimKiem", "TimKiem")
+<div class="col-md-9 product-right">
+    <h3 style="color:red">@ViewBag.ChuaCoTour</h3>
+    @foreach (var item in Model)
+    {
+        <div class="product-right-grids">
+            <div class="product-right-top">
+                <div class="p-left">
+                    <a href="@Url.Action("ChiTietTour","Tour",new { maTour=item.MaTour})"><img src="~/Image/@item.Anh" width="245" height="150" /> </a>
+                </div>
+                <div class="p-right">
+                    <div class="col-md-6 p-right-left">
+                        <a href="@Url.Action("ChiTietTour","Tour",new { maTour=item.MaTour})">@item.TenTour</a>
+                        <div class="p-right-price">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </div>
+                        <p>@item.GioiThieu</p>
+                        <p class="p-call">Nơi khởi hành:@item.DiemXP.TenDiemXP</p>
+                    </div>
+                    <div class="col-md-6 p-right-right">
+                        <h6>Rating : 4.1/5</h6>
+                        <p>(123) Views</p>
+                        <span class="p-offer">@string.Format("{0:0,0}", item.Gia)</span>
+                        @if (@Model.First(n => n.MaTour == item.MaTour).CTTours.Count() >= 1)
+                        {
+                            <p style="color:red">Ngày đi:@Model.First(n => n.MaTour == item.MaTour).CTTours.First().NgayXP</p>
+
+                        }
+                        else
+                        {
+                            <p style="color:red">Ngày đi:Tour chưa được lên lịch</p>
+                        }
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    }
+</div>
+

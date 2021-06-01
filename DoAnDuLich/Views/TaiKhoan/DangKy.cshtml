@@ -1,0 +1,86 @@
+﻿@using DoAnDuLich.Models
+@model KhachHang
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="banner holidays-banner">
+    <div class="container">
+        <div class="deals-info">
+            <h2>Đăng Ký Tài Khoản</h2>
+        </div>
+    </div>
+</div>
+<div class="faqs-top-grids">
+    <div class="book-grids">
+        <div class="col-md-6 book-left">
+            <div class="book-left-info">
+                <h3>Vui lòng nhập đầy đủ thông tin khách hàng</h3>
+            </div>
+            <div class="book-left-form">
+                <p>Họ Tên</p>
+                @Html.TextBoxFor(n => n.HoTen, new { id = "hoTen" })
+                <p>Số Điện Thoại</p>
+                @Html.TextBoxFor(n => n.SoDienThoai, new { id = "soDienThoai" })
+                <p>Email Address</p>
+                @Html.TextBoxFor(n => n.Email, new { id = "email" })
+                @ViewBag.TaiKhoanDaCo
+                <p>Địa Chỉ</p>
+                @Html.TextBoxFor(n => n.DiaChi, new { id = "diaChi" })
+                <p>Mật Khẩu</p>
+                <input type="password" name="MatKhau" id="matKhau" placeholder="Mật Khẩu">
+                <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+                <input type="button" id="dangKy" class="btn btn-success" value="Đăng Ký Tài Khoản">
+            </div>
+        </div>
+        <div class="col-md-6 book-left book-right">
+            <div class="book-left-info">
+                <h3>Recommended</h3>
+            </div>
+            <div class="book-left-bottom">
+                <div class="book-left-facebook">
+                    <a href="#">Connect with Facebook</a>
+                </div>
+                <div class="book-left-chrome">
+                    <a href="#">Connect with Google</a>
+                </div>
+            </div>
+            <ul>
+                <li>Access booking history with upcoming trips</li>
+                <li>Print tickets and invoices</li>
+                <li>Make checkouts simpler</li>
+                <li>Enter your contact details only once</li>
+                <li>Get alerts for low fares</li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<script>
+    $("#dangKy").click(function () {
+        var hoTen = $("#hoTen").val();
+        var soDienThoai = $("#soDienThoai").val();
+        var email = $("#email").val();
+        var diaChi = $("#diaChi").val();
+        var matKhau = $("#matKhau").val();
+        $.ajax({
+            type: "POST",
+            data: { hoTen: hoTen, SDT: soDienThoai, email: email, diaChi: diaChi, matKhau: matKhau },
+            url: "@Url.Action("DangKy","TaiKhoan")",
+            dataType:"json",
+            success: function (data) {
+                if (data.status == 1) {
+                    alert("Đăng ký tài khoản thanh công!");
+                    window.location.href = "@Url.Action("Index","Home")";
+                } else if (data.status == -1) {
+                    alert("Tài Khoản đã tồn tại trong hệ thống");
+                    window.location.href = "@Url.Action("DangKy","TaiKhoan")";
+                } else {
+                    alert("Đăng ký không thành công");
+                    window.location.href = "@Url.Action("DangKy","TaiKhoan")";
+                }
+            }
+        })
+    })
+</script>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DoAnDuLich.Models.DiemXP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDiemXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDiemXP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaDiemXP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaDiemXP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaDiemXP })
+        </td>
+    </tr>
+}
+
+</table>

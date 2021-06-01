@@ -1,0 +1,77 @@
+﻿@using DoAnDuLich.Models
+@{
+    ViewBag.Title = "Home Page";
+    IEnumerable<Tour> listTrongNuoc = ViewBag.listTrongNuoc as IEnumerable<Tour>;
+    IEnumerable<Tour> listNuocNgoai = ViewBag.listNuocNgoai as IEnumerable<Tour>;
+    IEnumerable<Tour> listHost = ViewBag.listHot as IEnumerable<Tour>;
+    IEnumerable<Tour> listnhieu = ViewBag.DatNhieu as IEnumerable<Tour>;
+    IEnumerable<TinTuc> listTin = ViewBag.listTinTuc as IEnumerable<TinTuc>;
+}
+<div class="container">
+    @Html.Partial("~/Views/Shared/_PartialBanner.cshtml")
+    <div class="banner-bottom-info">
+        <h3>Today's Top Deals</h3>
+    </div>
+    <div class="banner-bottom-grids">
+        <div class="col-md-4 banner-bottom-grid">
+            @Html.Partial("~/Views/Home/_PartialTourTrongNuoc.cshtml", listTrongNuoc.Take(4))
+            <div class="choose">
+                <div class="choose-info">
+                    <h4>Tại sao chọn chúng tôi</h4>
+                </div>  
+                <div class="choose-grids">
+                    <div class="choose-grids-info">
+                        <div class="choose-left">
+                            <h5>50</h5>
+                            <span>Tour</span>
+                        </div>
+                        <div class="choose-right">
+                            <a href="products.html">Tour Du Lịch</a>
+                            <p>Đa dạng,Chất lượng - Đạt chất lượng tốt nhất.</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="choose-grids-info">
+                        <div class="choose-left">
+                            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                        </div>
+                        <div class="choose-right">
+                            <a href="products.html">Mạng bán Tour</a>
+                            <p>Đầu tiên tại Việt Nam Ứng dụng công nghệ mới nhất.</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="choose-grids-info">
+                        <div class="choose-left">
+                            <h6>$</h6>
+                        </div>
+                        <div class="choose-right">
+                            <a href="products.html">Giá cả - Thanh toán</a>
+                            <p>Luân có mức giá tốt nhất - Thanh toán an toàn linh hoạt </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 banner-bottom-grid">
+            @Html.Partial("~/Views/Home/_PartialTourNuocNgoai.cshtml", listNuocNgoai.ElementAt(0))
+            <div class="top-destinations-grids">
+                <div class="top-destinations-info">
+                    <h4>Top Tour Dat Nhieu</h4>
+                </div>
+                @Html.Partial("~/Views/Home/_PartialDatNhieu.cshtml", listnhieu.Take(4))
+            </div>
+        </div>
+        <div class="col-md-4 banner-bottom-grid">
+            @Html.Partial("~/Views/Home/_PartialTourNuocNgoai.cshtml", listNuocNgoai.ElementAt(1))
+            <div class="news-grids">
+                <div class="news-grids-info">
+                    <h4>Tin tức News</h4>
+                </div>
+                @Html.Partial("~/Views/Home/_PartialTinTuc.cshtml", listTin)
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

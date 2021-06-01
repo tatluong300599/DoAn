@@ -1,0 +1,29 @@
+﻿@using DoAnDuLich.Models
+@model TinTuc
+@{
+    ViewBag.Title = "ChiTietTin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<LoaiTinTuc> listLoaiTin = ViewBag.LoaiTin as IEnumerable<LoaiTinTuc>;
+}
+
+<div class="faqs-top-grids">
+    <div class="blog-grids">
+        <div class="col-md-8 blog-left">
+            <div class="blog-left-grid single-left-grid">
+                <p><h3>@Model.TieuDe</h3></p>
+                <p>@Model.GioiThieu</p>
+                <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; @Model.TGDangTin &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+                <img src="~/Image/@Model.Anh" alt="">
+                <div class="blog-left-right">
+                    <p>@Html.Raw(Model.NoiDung)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 blog-right">
+            @Html.Action("_PartialTimkiem","TinTuc")
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+

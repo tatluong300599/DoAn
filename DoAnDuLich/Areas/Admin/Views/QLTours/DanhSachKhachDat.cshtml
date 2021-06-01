@@ -1,0 +1,65 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<CTDonDatTour>
+@{
+    ViewBag.Title = "DanhSachKhachDat";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h3>Danh Sach Khach Dat Tour</h3>
+@Html.ActionLink("Tro Ve", "ChiTiet", new { maTour = Model.ElementAt(0).DonDatTour.MaTour }, new { @class = "btn btn-danger" })
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Duyet Don Dat Tour
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Họ Tên Khách</th>
+                        <th>Tên Tour</th>
+                        <th>Ngày XP</th>
+                        <th>Đặt Chỗ</th>
+                        <th>Nguoi duyet</th>
+                        <th>Thành Tiền</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Họ Tên Khách</th>
+                        <th>Tên Tour</th>
+                        <th>Ngày XP</th>
+                        <th>Đặt Chỗ</th>
+                        <th>Nguoi duyet</th>
+                        <th>Thành Tiền</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonDatTour.KhachHang.HoTen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonDatTour.CTTour.Tour.TenTour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonDatTour.NgayXP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DonDatTour.SoLuongKhach)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NhanVien.HoTen)
+                            </td>
+                            <td>
+                                @string.Format("{0:0,0}", item.DonDatTour.ThanhTien) VND
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

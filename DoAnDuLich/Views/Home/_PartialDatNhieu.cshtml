@@ -1,0 +1,31 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<Tour>
+<div class="top-destinations-bottom">
+    @foreach (var item in Model.Take(5))
+    {
+        <div class="td-grids">
+            <div class="col-xs-3 td-left">
+                <img src="~/Image/@item.Anh" alt="" />
+            </div>
+            <div class="col-xs-5 td-middle">
+                <a href="@Url.Action("ChiTietTour","Tour",new {maTour=item.MaTour })">@item.TenTour</a>
+                @if (item.GioiThieu.Length < 37)
+                {
+                    <p>@item.GioiThieu</p>
+                }
+                else
+                {
+                    <p>@item.GioiThieu.Substring(0, 37) ...</p>
+                }
+            </div>
+            <div class="col-xs-4 td-right">
+                <p>
+                    @string.Format("{0:0,0}", item.Gia)
+                </p>
+                    VND
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+
+</div>

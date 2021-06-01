@@ -1,0 +1,91 @@
+﻿@using DoAnDuLich.Models
+@model DonDatTour
+@{
+    ViewBag.Title = "DonVuaDat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="banner holidays-banner">
+            <div class="container">
+                <div class="deals-info">
+                    <h2>Tour Vừa Đặt</h2>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("CapNhapDon","DatTour"))
+        {
+        <div class="c-rooms">
+            <div class="p-table">
+                <div class="p-table-grids">
+                    <div class="col-md-3 p-table-grid">
+                        <div class="p-table-grad-heading">
+                            <h6>Tour</h6>
+                        </div>
+                        <div class="p-table-grid-info">
+                            <a href="#"><img src="~/Image/@Model.CTTour.Tour.Anh" alt=""></a>
+                            <div class="room-basic-info">
+                                <a href="@Url.Action("ChiTietTour","Tour",new {maTour=Model.MaTour })">@Model.CTTour.Tour.TenTour</a>
+                                <p>@Model.CTTour.Tour.GioiThieu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 p-table-grid">
+                        <div class="p-table-grad-heading">
+                            <h6>Chi tiết Tour</h6>
+                        </div>
+                        <div class="rate-features">
+                            <ul>
+                                <li>Ngày xuất phát: @Model.CTTour.NgayXP.ToString("dd/MM/yyyy")</li>
+                                <li><a href="@Url.Action("ChiTietTour","Tour",new {maTour=Model.MaTour })">Chọn Ngày Khác</a></li>
+                                <li>Số Ngày: @Model.CTTour.Tour.SoNgay</li>
+                                <li>Số chỗ còn nhận: @Model.CTTour.SoLuongCho</li>
+                                <li>Giá: @string.Format("{0:0,0}", Model.CTTour.Tour.Gia * (100 - (Model.CTTour.KhuyenMai.PhanTram)) / 100) VND</li>
+                            </ul>
+                            <p style="color:red">Lưu ý:Trẻ em dưới 2 tuổi được miễn phí tham gia Tour cùng cha mẹ!<br />Vì vậy không thêm số lượng trẻ dưới 2 tuổi vào tổng số lượng.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-table-grid">
+                        <div class="p-table-grad-heading">
+                            <h6>Thông Tin Đặt Tour</h6>
+                        </div>
+                        <input type="hidden" name="MaDon" value="@Model.MaDon" />
+                        <div class="avg-rate">
+                            <div class="form-group">
+                                <span>Tổng số lượng khách</span>
+                                <input type="number" name="TongKhach" min="1" max="@Model.SoLuongKhach" value="@Model.SoLuongKhach" placeholder="Số lượng khách tham gia Tour" />
+                            </div>
+                            <div class="form-group">
+                                <span> Có trẻ Em từ 3 đến 12 tuổi</span>
+                                <input type="number" name="TreEm" min="0" max="@Model.SoLuongKhach" value="@Model.TreEm" placeholder="Trẻ em từ 3-12 tuổi được giảm 25% giá Tour" />
+                            </div>
+                            <div class="form-group">
+                                <span>Ghi Chú</span>
+                                <textarea name="GhiChu" rows="4" cols="30" placeholder="Số lượng trẻ dưới 2 tuổi - Các ghi chú khác">@Model.GhiChu</textarea>
+                            </div>
+                            <h4 style="color:red">Lựa chọn hình thức thanh toán</h4>
+                            <input type="radio" name="ThanhToan" checked /><span>Thanh Toán Online</span>
+                            <input type="radio" name="ThanhToan" /><span>Chuyển Khoản</span>
+                            <input type="radio" name="ThanhToan" /><span>Trực tiếp</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-table-grid">
+                        <div class="p-table-grad-heading">
+                            <h6>Book</h6>
+                        </div>
+                        <div class="book-button-column">
+                            Tổng tiền:@string.Format("{0:0,0}", Model.ThanhTien) VND
+                            <input type="submit" value="Xác Nhận" id="abc" class="btn btn-success center-block" />
+                        </div>
+                        <a href="@Url.Action("HuyDonDatTour","DatTour",new {maDon=Model.MaDon })">
+                            <input type="button" value="Hủy Đơn" class="btn btn-danger center-block" />
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+        }
+    </div>
+

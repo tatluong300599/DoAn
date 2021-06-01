@@ -1,0 +1,60 @@
+﻿@using DoAnDuLich.Models
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.PagedList<Tour>
+@{
+    ViewBag.Title = "TourTheoLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3>Danh Sach Tour Theo Loai</h3>
+    <hr />
+</div>
+@Html.Action("_PartialTimKiem", "TimKiem")
+<div class="col-md-9 product-right">
+    <h3 style="color:red">@ViewBag.ChuaCoTour</h3>
+    @foreach (var item in Model)
+    {
+        <div class="product-right-grids">
+            <div class="product-right-top">
+                <div class="p-left">
+                    <a href="@Url.Action("ChiTietTour","Tour",new { maTour=item.MaTour})"><img src="~/Image/@item.Anh" width="245" height="150" /> </a>
+                </div>
+                <div class="p-right">
+                    <div class="col-md-6 p-right-left">
+                        <a href="@Url.Action("ChiTietTour","Tour",new { maTour=item.MaTour})">@item.TenTour</a>
+                        <div class="p-right-price">
+                            @for (int i = 0; i < item.DanhGia; i++)
+                            {
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            }
+                        </div>
+                        <p>@item.GioiThieu</p>
+                        <p class="p-call">Nơi khởi hành:@item.DiemXP.TenDiemXP</p>
+                    </div>
+                    <div class="col-md-6 p-right-right">
+                        <h6>Rating : @item.DanhGia/5</h6>
+                        <p>(@item.LuotDanhGia) Lượt đánh giá</p>
+                        <span class="p-offer">@string.Format("{0:0,0}", item.Gia)</span>
+                        @if (@Model.First(n => n.MaTour == item.MaTour).CTTours.Count() >= 1)
+                        {
+                            <p style="color:red">Ngày đi:@Model.First(n => n.MaTour == item.MaTour).CTTours.First().NgayXP.ToShortDateString()</p>
+                            
+                        }
+                        else
+                        {
+                            <p style="color:red">Ngày đi:Tour chưa được lên lịch</p>
+                        }
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    }
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    <hr />
+    @Html.PagedListPager(Model, page => Url.Action("TourTheoLoai", new { @maLoaiTour = Model.ElementAt(0).MaLoaiTour, @page = page }))
+</div>
+

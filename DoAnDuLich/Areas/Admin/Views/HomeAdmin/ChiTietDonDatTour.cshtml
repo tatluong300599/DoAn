@@ -1,0 +1,69 @@
+﻿@using DoAnDuLich.Models
+@model DonDatTour
+@{
+    ViewBag.Title = "ChiTietDonDatTour";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>ChiTietDonDatTour</h2>
+<div>
+    <h4>Chi tiet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CTTour.Tour.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CTTour.Tour.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.HoTen)
+        </dd>
+        <dt>
+            Số Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongKhach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongKhach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CTTour.SoLuongCho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CTTour.SoLuongCho)
+        </dd>
+        <dt>
+            Tổng Tiền
+        </dt>
+
+        <dd>
+            @string.Format("{0:0,0}", Model.ThanhTien) VND
+        </dd>
+        <dd>
+            @Html.ActionLink("Back", "ListDonDatTour")
+        </dd>
+    </dl>
+</div>

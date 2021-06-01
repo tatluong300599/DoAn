@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c82b72f280d649e4be59ed6ab0c84fdb" Name="Diagram1">
+        <EntityTypeShape EntityType="DoAnDuLichModel.BinhLuan" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.CTDonDatTour" Width="1.5" PointX="15" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.CTTour" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.DiemDen" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.DiemXP" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.DonDatTour" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.HanhTrinh" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.KhachHang" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.KhuyenMai" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.LienHe" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.LoaiTinTuc" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.LoaiTour" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.NhanVien" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.sysdiagram" Width="1.5" PointX="7.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.TinTuc" Width="1.5" PointX="10" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnDuLichModel.Tour" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_kh_bl" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_tour_bl" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_don" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_nv" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_ctt_" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_km" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_MaTour_kh" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_maDiemden" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_maht" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_maDiemXP" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_MaKH" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_tin_l" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnDuLichModel.fk_maLoaiTour" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

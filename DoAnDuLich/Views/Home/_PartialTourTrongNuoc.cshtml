@@ -1,0 +1,58 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<Tour>
+<div class="destinations">
+    <ul>
+        <li class="button">
+            <a href="#">@Model.ElementAt(0).TenTour</a>
+        <li class="dropdown active">
+            <a href="@Url.Action("ChiTietTour","Tour",new {maTour=Model.ElementAt(0).MaTour })">
+                <div class="destinations-grid">
+                    <img src="~/Image/@Model.ElementAt(0).Anh" alt="" />
+                </div>
+                <div class="destinations-grid-info">
+                    <div class="destinations-hotel">
+                        @if (Model.ElementAt(0).GioiThieu.Length < 30)
+                        {
+                            <p>@Model.ElementAt(0).GioiThieu</p>
+                        }
+                        else
+                        {
+                            <p>@Model.ElementAt(0).GioiThieu.Substring(0, 27) ...</p>
+                        }
+                    </div>
+                    <div class="destinations-price">Giá:@string.Format("{0:0,0}", Model.ElementAt(0).Gia) VND</div>
+                    <div class="clearfix"> </div>
+                </div>
+            </a>
+        </li>
+        </li>
+        @for (int i = 1; i < Model.Count(); i++)
+        {
+            <li class="button"><a href="#">@Model.ElementAt(i).TenTour</a>
+            <li class="dropdown">
+                <a href="@Url.Action("ChiTietTour","Tour",new {maTour=Model.ElementAt(i).MaTour })">
+                    <div class="destinations-grid">
+                        <img src="~/Image/@Model.ElementAt(i).Anh" alt="" />
+                    </div>
+                    <div class="destinations-grid-info">
+                        <div class="destinations-hotel">
+                            @if (Model.ElementAt(i).GioiThieu.Length < 30)
+                            {
+                                <p>@Model.ElementAt(i).GioiThieu</p>
+                            }
+                            else
+                            {
+                                <p>@Model.ElementAt(i).GioiThieu.Substring(0, 27) ...</p>
+                            }
+                        </div>
+                        <div class="destinations-price">Giá:@string.Format("{0:0,0}", Model.ElementAt(i).Gia) VND</div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </a>
+            </li>
+            </li>
+        }
+    </ul>
+</div>
+
+

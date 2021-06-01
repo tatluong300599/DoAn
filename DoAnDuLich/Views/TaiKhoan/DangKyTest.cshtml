@@ -1,0 +1,71 @@
+﻿@using DoAnDuLich.Models
+@model KhachHang
+@{
+    ViewBag.Title = "DangKyTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="banner holidays-banner">
+    <div class="container">
+        <div class="deals-info">
+            <h2>Đăng Ký Tài Khoản</h2>
+        </div>
+    </div>
+</div>
+<div class="faqs-top-grids">
+    <div class="book-grids">
+        <div class="col-md-6 book-left">
+            <div class="book-left-info">
+                <h3>Vui lòng nhập đầy đủ thông tin khách hàng</h3>
+            </div>
+            <div class="book-left-form">
+                @using (Html.BeginForm("DangKyTest", "TaiKhoan"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*<p>Họ Tên</p>*@
+                    @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(n => n.HoTen, htmlAttributes: new { id = "hoTen" })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    <p>Số Điện Thoại</p>
+                    @Html.TextBoxFor(n => n.SoDienThoai, htmlAttributes: new { id = "soDienThoai" })
+                    @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                    <p>Email Address</p>
+                    @Html.TextBoxFor(n => n.Email, htmlAttributes: new { id = "email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @ViewBag.TaiKhoanDaCo
+                    <p>Địa Chỉ</p>
+                    @Html.TextBoxFor(n => n.DiaChi, htmlAttributes: new { id = "diaChi" })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    <p>Mật Khẩu</p>
+                    @*<input type="password" name="MatKhau" id="matKhau" placeholder="Mật Khẩu">*@
+                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+                    <input type="submit" id="dangKy" class="btn btn-success" value="Đăng Ký Tài Khoản">
+                }
+            </div>
+        </div>
+        <div class="col-md-6 book-left book-right">
+            <div class="book-left-info">
+                <h3>Recommended</h3>
+            </div>
+            <div class="book-left-bottom">
+                <div class="book-left-facebook">
+                    <a href="#">Connect with Facebook</a>
+                </div>
+                <div class="book-left-chrome">
+                    <a href="#">Connect with Google</a>
+                </div>
+            </div>
+            <ul>
+                <li>Access booking history with upcoming trips</li>
+                <li>Print tickets and invoices</li>
+                <li>Make checkouts simpler</li>
+                <li>Enter your contact details only once</li>
+                <li>Get alerts for low fares</li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

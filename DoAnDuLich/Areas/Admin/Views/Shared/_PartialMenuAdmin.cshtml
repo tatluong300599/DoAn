@@ -1,0 +1,123 @@
+﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","HomeAdmin")">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Huyền Trang Travel</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="@Url.Action("Index","HomeAdmin")">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Trang Chủ</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Index","QLTours")">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Quản Lý Tour</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Index","QLTinTucs")">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Quản Lý Tin Tức</span>
+        </a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Order
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+           aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Quản Lý Đơn</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Order Khách Hàng</h6>
+                <a class="collapse-item" href="@Url.Action("ListDonDatTour","HomeAdmin")">Đơn đang chờ duyệt</a>
+                <a class="collapse-item" href="@Url.Action("ListChuaThanhToan","HomeAdmin")">Đơn chưa thanh toán</a>
+                <a class="collapse-item" href="@Url.Action("ListDonALL","HomeAdmin")">Tất cả các đơn</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+           aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Quản Lý Khác</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Comment - Contact</h6>
+                <a class="collapse-item" href="@Url.Action("Index","QLDiemXPs")">Điểm xuất phát</a>
+                <a class="collapse-item" href="@Url.Action("Index","QLDiemDens")">Điểm đến</a>
+                <a class="collapse-item" href="@Url.Action("Index","QLLoaiTours")">Loại Tour</a>
+                <a class="collapse-item" href="@Url.Action("Index","LoaiTinTucs")">Loại Tin Tức</a>
+                <a class="collapse-item" href="@Url.Action("Index","KhuyenMais")">Khuyễn Mãi</a>
+            </div>
+        </div>
+    </li>
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        User
+    </div>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Quản lý Người Dùng</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Nhân Viên - Khách Hàng</h6>
+                <a class="collapse-item" href="@Url.Action("Index","QLNhanVien")">Nhân Viên</a>
+                <a class="collapse-item" href="@Url.Action("Index","QLKhachHangs")">Khách Hàng</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    <div class="sidebar-card d-none d-lg-flex">
+        <img class="sidebar-card-illustration mb-2" src="~/Areas/Admin/Css_Js_AD/img/undraw_rocket.svg" alt="...">
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+    </div>
+
+</ul>

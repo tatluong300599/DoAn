@@ -1,0 +1,48 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<LoaiTinTuc>
+<div class="Categories">
+    <h3>Loại Tin Tức</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("TinTucTheoLoai","TinTuc",new {maLoaiTin=item.MaLoaiTin })">@item.TenLoaiTin</a></li>
+        }
+    </ul>
+</div>
+<div class="comments">
+    <h3>Recent Comments</h3>
+    <div class="comments-text">
+        <div class="col-md-3 comments-left">
+            <img src="~/Content/Css/images/user1.jpg" alt="">
+        </div>
+        <div class="col-md-9 comments-right">
+            <h5>Admin</h5>
+            <a href="#">Phasellus sem leointerdum risus</a>
+            <p>March 16,2014 6:09:pm</p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="comments-text">
+        <div class="col-md-3 comments-left">
+            <img src="~/Content/Css/images/user2.jpg" alt="">
+        </div>
+        <div class="col-md-9 comments-right">
+            <h5>Admin</h5>
+            <a href="#">Phasellus sem leointerdum risus</a>
+            <p>March 16,2014 6:09:pm</p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="comments-text">
+        <div class="col-md-3 comments-left">
+            <img src="~/Content/Css/images/user3.jpg" alt="">
+        </div>
+        <div class="col-md-9 comments-right">
+            <h5>Admin</h5>
+            <a href="#">Phasellus sem leointerdum risus</a>
+            <p>March 16,2014 6:09:pm</p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+

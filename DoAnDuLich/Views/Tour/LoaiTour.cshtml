@@ -1,0 +1,36 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<LoaiTour>
+@{
+    ViewBag.Title = "LoaiTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="banner holidays-banner">
+    <div class="container">
+        <div class="deals-info">
+            <h2>Danh Sach Loai Tour Du Lich Cua Huyen Trang</h2>
+        </div>
+    </div>
+</div>
+<div class="banner-bottom-grids">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 weekend-grids">
+            <div class="weekend-grid">
+                <a href="@Url.Action("TourTheoLoai","Tour",new {maLoaiTour=item.MaLoaiTour })">
+                    <img src="~/Image/@item.Anh" alt="" height="200" />
+                    <div class="weekend-grid-info">
+                        <h5>@item.TenLoaiTour</h5>
+                        <div class="rating">
+                            <span href="#" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span href="#" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span href="#" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span href="#" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            <span href="#" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+    <div class="clearfix"> </div>
+</div>

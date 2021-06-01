@@ -1,0 +1,70 @@
+﻿@using DoAnDuLich.Models
+@*@{
+        IEnumerable<DiemXP> listDiemXP = ViewBag.DiemXP as IEnumerable<DiemXP>;
+        IEnumerable<DiemDen> listDiemKT = ViewBag.DiemKT as IEnumerable<DiemDen>;
+    }*@
+<div class="col-md-3 product-left">
+    <div class="h-class">
+        <h5>Tìm Kiếm Tour</h5>
+        <hr />
+        @using (Html.BeginForm("KQTimKiemTuForm", "TimKiem"))
+        {
+            <div class="form-group">
+                <label>Điểm xuất phát</label>
+                @Html.DropDownList("DiemXP", (IEnumerable<SelectListItem>)ViewBag.DiemXP, new { @class = "typeahead1 input-md form-control tt-input" })
+            </div>
+            <div class="form-group">
+                <label>Điểm đến</label>
+                @Html.DropDownList("DiemDen", (IEnumerable<SelectListItem>)ViewBag.DiemDen, "Chon DiemDen", new { @class = "typeahead1 input-md form-control tt-input" })
+            </div>
+            @*<div class="form-group">
+                    <label>Nơi Khởi Hành</label>
+                    <select name="DiemXP">
+                        @foreach (var item in listDiemXP)
+                        {
+                            <option value="@item.MaDiemXP">@item.TenDiemXP</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nơi Khởi Hành</label>
+                    <select name="DiemDen">
+                        @foreach (var item in listDiemKT)
+                        {
+                            <option value="@item.MaDiemDen">@item.TenDiemDen</option>
+                        }
+                    </select>
+                </div>*@
+            <div class="form-group">
+                <label>Khởi Hành Từ Ngày</label>
+                <input type="date" name="NgayXP1" />
+            </div>
+            <div class="form-group">
+                <label>Khởi Hành Đến Ngày</label>
+                <input type="date" name="NgayXP2" />
+            </div>
+            <div class="form-group">
+                <label>Giá Tiền Từ</label>
+                <select name="GiaMin">
+                    <option value="GiaMin">Giá Min</option>
+                    <option value="1000000">1Tr</option>
+                    <option value="2000000">2Tr</option>
+                    <option value="5000000">5Tr</option>
+                    <option value="10000000">10Tr</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Giá Tiền Đến</label>
+                <select name="GiaMax">
+                    <option value="GiaMax">Giá Max</option>
+                    <option value="2000000">2Tr</option>
+                    <option value="5000000">5Tr</option>
+                    <option value="10000000">10Tr</option>
+                    <option value="20000000">20Tr</option>
+                </select>
+            </div>
+            <hr />
+            <input type="submit" value="TimKiem" class="btn btn-danger" />
+        }
+    </div>
+</div>

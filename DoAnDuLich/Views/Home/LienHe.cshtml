@@ -1,0 +1,68 @@
+﻿@using DoAnDuLich.Models
+@model LienHe
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="banner holidays-banner">
+        <div class="container">
+            <div class="deals-info">
+                <h2>Liên Hệ - Huyền Trang</h2>
+            </div>
+        </div>
+    </div>
+    <div class="faqs-top-grids">
+        <div class="contact-info">
+            <h4>Huyền Trang Information</h4>
+            <p>
+                Công Ty TNHH Thương Mại Và Du Lịch Huyền Trang - Huyen Trang Travel Trading Company Limited có địa chỉ tại Số 1, đường Phan Bội Châu, Phường Bãi Cháy, Thành phố Hạ Long, Tỉnh Quảng Ninh. Mã số thuế 5701922298 Đăng ký & quản lý bởi Chi cục thuế Quảng Ninh
+            </p>
+        </div>
+        <div class="contact-grids">
+            <div class="col-md-7 contact-para">
+                <h5>Contact Form</h5>
+                <h5 style="color:red">@ViewBag.ThongBao</h5>
+                @using (Html.BeginForm())
+                {
+                    <div class="grid-contact">
+                        <div class="col-md-6 contact-grid">
+                            <p>Họ Tên</p>
+                            <input type="text" name="HoTen">
+                        </div>
+                        <div class="col-md-6 contact-grid">
+                            <p>Địa Chỉ</p>
+                            <input type="text" name="DiaChi">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="grid-contact">
+                        <div class="col-md-6 contact-grid">
+                            <p>Số Điện Thoại</p>
+                            <input type="text" name="SoDienThoai">
+                        </div>
+                        <div class="col-md-6 contact-grid">
+                            <p>Email</p>
+                            <input type="text" name="Email">
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p class="your-para">Nội dung</p>
+                    <textarea cols="77" rows="6" name="NoiDung"></textarea>
+                    <div class="send">
+                        <input type="submit" value="Gửi Đi">
+                    </div>
+                }
+            </div>
+            <div class="col-md-5 contact-map">
+                <h5>Loaction</h5>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14886.42283861793!2d105.6764465!3d21.12828015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1617165163929!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+

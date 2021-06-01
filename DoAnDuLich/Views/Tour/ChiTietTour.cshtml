@@ -1,0 +1,256 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<CTTour>
+@{
+    ViewBag.Title = "ChiTietTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<Tour> tour = ViewBag.Tour as IEnumerable<Tour>;
+    IEnumerable<Tour> listLienQuan = ViewBag.LienQuan as IEnumerable<Tour>;
+    IEnumerable<BinhLuan> listBinhLuan = ViewBag.BinhLuan as IEnumerable<BinhLuan>;
+}
+
+<div class="faqs-top-grids">
+    <!--single-page-->
+    <div class="single-page">
+        <div class="col-md-8 single-gd-lt">
+            <div class="single-pg-hdr">
+                <h2>@tour.ElementAt(0).TenTour</h2>
+                @*<div class="rating">
+                        <a href="@Url.Action("DanhGia","Tour",new {maTour=tour.ElementAt(0).MaTour,danhGia=1})"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("DanhGia","Tour",new {maTour=tour.ElementAt(0).MaTour,danhGia=2})"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("DanhGia","Tour",new {maTour=tour.ElementAt(0).MaTour,danhGia=3})"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+                        <a href="@Url.Action("DanhGia","Tour",new {maTour=tour.ElementAt(0).MaTour,danhGia=4})"><span class="glyphicon glyphicon-star" aria-hidden="false"></span></a>
+                        <a href="@Url.Action("DanhGia","Tour",new {maTour=tour.ElementAt(0).MaTour,danhGia=5})"><span class="glyphicon glyphicon-star" aria-hidden="false"></span></a>
+                    </div>*@
+                <p>@tour.ElementAt(0).GioiThieu</p>
+                <p>Khoi Hanh Tu: <a href="#">@tour.ElementAt(0).DiemXP.TenDiemXP</a> Den <a href="#">@tour.ElementAt(0).DiemDen.TenDiemDen</a>Trong<a href="#">@tour.ElementAt(0).SoNgay ngay</a></p>
+            </div>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li data-thumb="/Image/@tour.ElementAt(0).Anh">
+                        <img src="~/Image/@tour.ElementAt(0).Anh" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p2.jpg">
+                        <img src="~/Content/Css/images/p2.jpg" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p3.jpg">
+                        <img src="~/Content/Css/images/p3.jpg" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p4.jpg">
+                        <img src="~/Content/Css/images/p4.jpg" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p1.jpg">
+                        <img src="~/Content/Css/images/p1.jpg" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p2.jpg">
+                        <img src="~/Content/Css/images/p2.jpg" alt="" />
+                    </li>
+                    <li data-thumb="/Content/Css/images/p3.jpg">
+                        <img src="~/Content/Css/images/p3.jpg" alt="" />
+                    </li>
+                </ul>
+            </div>
+            <!-- FlexSlider -->
+            <script defer src="~/Content/Css/js/jquery.flexslider.js"></script>
+            <script>
+                // Can also be used with $(document).ready()
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        controlNav: "thumbnails"
+                    });
+                });
+            </script>
+            @Html.Raw(tour.ElementAt(0).ChuongTrinh)
+            <hr />
+            <h3 style="color:red">Điều Kiện Hoàn Hủy Tour</h3>
+            <hr />
+            Thời gian báo hoãn,hủy chương trình:
+            <ul>
+                <li>Sau khi đăng ký tour, mọi trường hợp khách báo hoãn hủy sẽ phải chịu chi phí phạt hủy như sau:</li>
+                <li>Từ 20-30 ngày trước ngày khởi hành, số tiền phạt là 70% nhân với số lượng khách hủy.</li>
+                <li>Từ 10-15 ngày trước ngày khởi hành, số tiền phạt là 90% nhân với số lượng khách hủy.</li>
+                <li>Hoãn/ hủy trong vòng 10 ngày khởi hành, không được hoàn lại số tiền đã nộp.</li>
+                <li>Bên A tự ý bỏ chương trình không thông báo trước sẽ không được hoàn trả bất kỳ chi phí nào.</li>
+                <li>
+                    Trong trường hợp đoàn không thể khởi hành theo dự kiến do các nguyên nhân bất khả kháng như: thiên tai, bão lụt, chiến tranh, hủy hoãn bay do hãng hàng không…
+                    Bên B sẽ thu xếp ngày khởi hành mới. Mọi chi phí phát sinh do hai bên thỏa thuận.
+                </li>
+                <li>Bên B có trách nhiệm tư vấn cho bên A xử lý các vẫn đề phát sinh nếu có trong quá trình thực hiện chuyến đi.</li>
+                <li>Bên B phải thực hiện đúng đủ chương trình với chất lượng và giá cả theo chương trình đính kèm.</li>
+            </ul>
+            <hr />
+            <a name="NgayKhac"></a>
+            <h3>Danh sach ngay khoi hanh</h3>
+            @if (Model.Count() != 0)
+            {
+                <table border="1" width="700">
+                    <tr>
+                        <th>
+                            Ngày xuất phát
+                        </th>
+                        <th>
+                            Số ngày
+                        </th>
+                        <th>
+                            Còn nhận
+                        </th>
+                        <th>
+                            Đơn Giá
+                        </th>
+                        <th>
+                            Khuyễn mãi
+                        </th>
+                        <th>
+                            Đặt Tour
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.NgayXP.ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @item.Tour.SoNgay Ngày
+                            </td>
+                            <td>
+                                @item.SoLuongCho Chỗ
+                            </td>
+                            <td>
+                                <del>@string.Format("{0:0,0}", item.Tour.Gia)</del> VND
+                            </td>
+                            <td>
+                                @string.Format("{0:0,0}", item.Tour.Gia * (100 - (item.KhuyenMai.PhanTram)) / 100) VND
+                            </td>
+                            @if (item.SoLuongCho > 0)
+                            {
+                                <td>
+                                    @Html.ActionLink("Dat Ngay", "DatTour", "DatTour", new { maTour = item.MaTour, ngayXP = item.NgayXP }, new { @class = "btn btn-success" })
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.ActionLink("Lien He", "LienHe", "Home", null, new { @class = "btn btn-primary" })
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <h3 style="color:red">Tour chưa được lên lịch</h3>
+            }
+
+            <div class="response">
+                <hr />
+                <h3>Bình Luận</h3>
+                @if (listBinhLuan.Count() > 0)
+                {
+                    foreach (var item in listBinhLuan.Take(3))
+                    {
+                        <div class="media response-info">
+                            <div class="media-left response-text-left">
+                                <a href="#">
+                                    <img width="75" height="75" src="~/Content/Css/images/user1.jpg" alt="">
+                                </a>
+                                <h5><a href="#">@item.KhachHang.HoTen</a></h5>
+                            </div>
+                            <div class="media-body response-text-right">
+                                <p>
+                                    @for (int i = 0; i < item.DanhGia; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    }
+                                </p>
+                                <p>
+                                    @item.NoiDung
+                                </p>
+                                <ul>
+                                    <li>@DateTime.Now</li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p style="color:red">Chưa có Bình luận/Đánh giá về Tour</p>
+                }
+
+                @*<hr />
+                    <div class="opinion">
+                        <h3>New Comment</h3>
+                        @using (Html.BeginForm("BinhLuan", "Tour"))
+                        {
+                            <input type="hidden" name="MaTour" value="@tour.ElementAt(0).MaTour" />
+                            <textarea placeholder="Message" name="NoiDung" required=""></textarea>
+                            <input type="submit" value="Comment" class="btn btn-success">
+                        }
+                    </div>*@
+            </div>
+        </div>
+        <div class="col-md-4 single-gd-rt">
+            <div class="spl-btn">
+                <div class="spl-btn-bor">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                    </a>
+                    <p>@tour.ElementAt(0).TenTour</p>
+                    <script>
+                        $(document).ready(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                </div>
+                <div class="sp-bor-btn text-left">
+                    @for (int i = 0; i < tour.ElementAt(0).DanhGia; i++)
+                    {
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    }
+                    <b>@string.Format("{0:0.##}", tour.ElementAt(0).DanhGia)/5</b> trong <b>@tour.ElementAt(0).LuotDanhGia</b> Đánh giá
+                    <hr />
+                    @if (Model.Count() != 0)
+                    {
+                        <p>Khởi hành:   @Model.ElementAt(0).NgayXP.ToString("MM/dd/yyyy")</p>
+                        <p><a href="#NgayKhac"><input type="button" value="Chon Ngay Khac" /></a></p>
+                        <p>Thời Gian:   @Model.ElementAt(0).Tour.SoNgay ngày</p>
+                        <p>Nơi Khởi hành:   @Model.ElementAt(0).Tour.DiemXP.TenDiemXP</p>
+                        <hr />
+                        <p>Giá:     <del>@string.Format("{0:0,0}", tour.ElementAt(0).Gia)</del> VND</p>
+                        <p style="color:red">Còn :@string.Format("{0:0,0}", Model.ElementAt(0).Tour.Gia * (100 - (Model.ElementAt(0).KhuyenMai.PhanTram)) / 100) VND</p>
+                        <p>Số chỗ còn nhận:     @Model.ElementAt(0).SoLuongCho</p>
+                        <hr />
+                        <p style="color:red">(*) Luu y:Thoi gian khoi hanh dua vao thoi gian cua hang bay</p>
+                        <hr />
+                        <p>
+                            @Html.ActionLink("Dat Tour", "DatTour", "DatTour", new { maTour = Model.ElementAt(0).MaTour, ngayXP = Model.ElementAt(0).NgayXP }, new { @class = "btn btn-success" })
+                        </p>
+                    }
+                    else
+                    {
+                        <p style="color:red">Tour chưa được lên lịch cụ thể,bạn có thể để lại lời nhắn chúng tôi sẽ liên hệ với bạn sớm nhất khi có Tour được sắp lịch</p>
+                        <p align="center">
+                            <a href="@Url.Action("LienHe","Home")"><input type="button" value="Nhan lien he" class="btn btn-success" /></a>
+                            @Html.ActionLink("Trang chu", "Index", "Home", new { }, new { @class = "btn btn-success" })
+                        </p>
+                    }
+                </div>
+            </div>
+            <div class="other-comments">
+                <div class="comments-head">
+                    <h3>Tour Lien Quan</h3>
+                    <div class="clearfix"></div>
+                </div>
+                @*<div class="comments-bot">
+                        @Html.Partial("~/Views/Tour/_PartialLienQuan.cshtml", listLienQuan.Take(3))
+                    </div>*@
+                @Html.Partial("~/Views/Tour/_PartialLienQuan.cshtml", listLienQuan.Take(3))
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!--//single-page-->
+</div>

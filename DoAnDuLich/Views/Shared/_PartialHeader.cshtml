@@ -1,0 +1,133 @@
+﻿@using DoAnDuLich.Models
+<div class="header">
+    <div class="container">
+        <div class="header-grids">
+            <div class="logo">
+                <h1><a href="@Url.Action("Index","Home")"><span>Huyen</span>Trang</a></h1>
+            </div>
+            <!--navbar-header-->
+            <div class="header-dropdown">
+                <div class="emergency-grid">
+                    @if (Session["TaiKhoan"] != null)
+                    {
+                        KhachHang kh = Session["TaiKhoan"] as KhachHang;
+                        <ul>
+                            <li>Xin Chào : </li>
+                            <li class="call"><a href="@Url.Action("ThongTinCaNhan","TaiKhoan")">@kh.HoTen</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul>
+                            <li>Phone : </li>
+                            <li class="call">+ 098 765 4321</li>
+                        </ul>
+                    }
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="nav-top">
+            <div class="top-nav">
+                <span class="menu"><img src="~/Content/Css/images/menu.png" alt="" /></span>
+                <ul class="nav1">
+                    <li><a href="@Url.Action("LoaiTour","Tour")">DuLich</a></li>
+                    <li><a href="@Url.Action("KhachSan","KhachSan")">KhachSan</a></li>
+                    <li><a href="https://vietravelairlines.vn/vn/vi">Van Chuyen</a></li>
+                    <li><a href="@Url.Action("listTinTuc","TinTuc")">Tin Tuc</a></li>
+                    <li><a href="trains.html">Khuyen Mai</a></li>
+                    <li><a href="https://vietravelplus.com/">VietravelPus</a></li>
+                    <li><a href="@Url.Action("LienHe","Home")">Lien He</a></li>
+                </ul>
+                <div class="clearfix"> </div>
+                <!-- script-for-menu -->
+                <script>
+
+                    $("span.menu").click(function () {
+                        $("ul.nav1").slideToggle(300, function () {
+                            // Animation complete.
+                        });
+                    });
+
+                </script>
+                <!-- /script-for-menu -->
+            </div>
+            <div class="dropdown-grids">
+                <div id="loginContainer">
+                    @if (Session["TaiKhoan"] != null)
+                    {
+                        KhachHang kh = Session["TaiKhoan"] as KhachHang;
+                        <a href="@Url.Action("DangXuat","TaiKhoan")"><span>DangXuat</span></a>
+                    }
+                    else
+                    {
+                        <a href="#" id="loginButton"><span>Login</span></a>
+                        <div id="loginBox">
+                            @*<form id="loginForm">*@
+                            @using (Html.BeginForm("Login", "TaiKhoan", FormMethod.Post, new { id = "loginForm" }))
+                            {
+                                <div class="login-grids">
+                                    <div class="login-grid-left">
+                                        <fieldset id="body">
+                                            <fieldset>
+                                                <label for="email">Email Address</label>
+                                                <input type="email" name="TaiKhoan" id="inputUserName">
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="password">Password</label>
+                                                <input type="password" name="MatKhau" id="inputPassword">
+                                            </fieldset>
+                                            <input type="submit" id="login" onclick="fun_login()" value="Sign in">
+                                            <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+                                        </fieldset>
+                                        <span><a href="#">Forgot your password?</a></span>
+                                        <div class="or-grid">
+                                            <p>OR</p>
+                                        </div>
+                                        <div class="social-sits">
+                                            <div class="facebook-button">
+                                                <a href="#">Connect with Facebook</a>
+                                            </div>
+                                            <div class="chrome-button">
+                                                <a href="#">Connect with Google</a>
+                                            </div>
+                                            <div class="button-bottom">
+                                                <p>New account? <a href="signup.html">Signup</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @*</form>*@
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#login").click(function () {
+        var taiKhoan = $("#inputUserName").val();
+        var matKhau = $("#inputPassword").val();
+        $.ajax({
+            type: "POST",
+            data: { taiKhoan:taiKhoan, matKhau:matKhau },
+            url: "@Url.Action("Login","TaiKhoan")",
+            dataType:"json",
+            success: function (data) {
+                if (data.status == 1) {
+                    alert("Đăng nhập thành công");
+                    window.location.href = "@Url.Action("Index","Home")";
+                } else {
+                    alert("Đăng nhập thất bại!Đăng nhập lại");
+                    window.location.href = "@Url.Action("Index","Home")";
+                }
+            }
+        })
+    })
+</script>

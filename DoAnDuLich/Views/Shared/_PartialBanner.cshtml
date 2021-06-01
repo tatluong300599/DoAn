@@ -1,0 +1,152 @@
+﻿@using DoAnDuLich.Models
+@{
+    IEnumerable<DiemXP> lstDiemXP = ViewBag.DiemXP as IEnumerable<DiemXP>;
+    IEnumerable<DiemDen> lstDiemDen = ViewBag.DiemKT as IEnumerable<DiemDen>;
+}
+<!-- banner -->
+<div class="banner holidays-banner">
+    <!-- container -->
+    <div class="container">
+        <div class="col-md-4 banner-left">
+            <section class="slider2">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="slider-info">
+                                <img src="~/Content/Css/images/5.jpg" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slider-info">
+                                <img src="~/Content/Css/images/6.jpg" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slider-info">
+                                <img src="~/Content/Css/images/7.jpg" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slider-info">
+                                <img src="~/Content/Css/images/8.jpg" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slider-info">
+                                <img src="~/Content/Css/images/6.jpg" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!--FlexSlider-->
+        </div>
+        <div class="col-md-8 banner-right">
+            <div class="sap_tabs">
+                <div class="booking-info about-booking-info">
+                    <h2>Tìm kiếm Tour Du Lịch</h2>
+                </div>
+                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <!---->
+                    <div class="facts about-facts train-facts">
+                        <div class="booking-form train-form">
+                            <link rel="stylesheet" href="~/Content/Css/css/jquery-ui.css" />
+                            <!---strat-date-piker---->
+                            <script>
+                                $(function () {
+                                    $("#datepicker,#datepicker1").datepicker();
+                                });
+                            </script>
+                            <!---/End-date-piker---->
+                            <!-- Set here the key for your domain in order to hide the watermark on the web server -->
+                            <div class="online_reservation">
+                                <div class="b_room">
+                                    <div class="booking_room">
+                                        @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+                                        {
+                                            <div class="reservation">
+                                                <ul>
+                                                    <li class="span1_of_1 desti">
+                                                        <h5>Xuất phát từ</h5>
+                                                        <div class="book_date">
+                                                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                                            @Html.DropDownList("DiemXP", (IEnumerable<SelectListItem>)ViewBag.DiemXP, new { @class = "typeahead1 input-md form-control tt-input" })
+                                                        </div>
+                                                    </li>
+                                                    <li class="span1_of_1 left desti">
+                                                        <h5>Địa điểm muốn đến</h5>
+                                                        <div class="book_date">
+                                                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                                                            @Html.DropDownList("DiemDen", (IEnumerable<SelectListItem>)ViewBag.DiemDen, "Chon DiemDen", new { @class = "typeahead1 input-md form-control tt-input" })
+                                                        </div>
+                                                    </li>
+                                                    <div class="clearfix"></div>
+                                                </ul>
+                                            </div>
+                                            <div class="reservation">
+                                                <ul>
+                                                    <li class="span1_of_1 desti">
+                                                        <h5>Từ ngày</h5>
+                                                        <div class="book_date">
+                                                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                                            <input type="date" name="NgayXP">
+                                                        </div>
+                                                    </li>
+                                                    <li class="span1_of_1 left desti">
+                                                        <h5>Đến ngày</h5>
+                                                        <div class="book_date">
+                                                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                                            <input type="date" name="NgayKT">
+                                                        </div>
+                                                    </li>
+                                                    <div class="clearfix"></div>
+                                                </ul>
+                                            </div>
+                                            <div class="reservation">
+                                                <ul>
+                                                    <li class="span1_of_3">
+                                                        <div class="date_btn">
+                                                            <input type="submit" value="Search" class="btn btn-success" />
+                                                        </div>
+                                                    </li>
+                                                    <div class="clearfix"></div>
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!-- //container -->
+</div>
+<!-- //banner -->
+<div class="move-text">
+    @if (Session["TaiKhoan"] == null)
+    {
+        <div class="marquee">
+            Đăng ký tài khoản với chúng tôi,Miễn Phí!
+            <a href="@Url.Action("DangKy","TaiKhoan")">
+                Click
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="marquee">
+            Huyền Trang Tour rất hân hạnh khi được đồng hành cùng bạn!
+        </div>
+    }
+    <script type="text/javascript" src="~/Content/Css/js/jquery.marquee.min.js"></script>
+    <script>
+        $('.marquee').marquee({ pauseOnHover: true });
+                                      // sourceURL=pen.js
+    </script>
+</div>

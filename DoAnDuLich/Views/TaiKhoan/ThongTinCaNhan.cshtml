@@ -1,0 +1,52 @@
+﻿@using DoAnDuLich.Models;
+@model KhachHang
+@{
+    ViewBag.Title = "ThongTinCaNhan";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+<div class="banner holidays-banner">
+    <div class="container">
+        <div class="deals-info">
+            <h2>Thông tin Khách Hàng</h2>
+        </div>
+    </div>
+</div>
+<div class="faqs-top-grids">
+    @using (Html.BeginForm())
+    {
+        <div class="book-grids">
+            <div class="col-md-6 book-left">
+                <div class="book-left-info">
+                    <h3>Tài khoản :@Model.Email</h3>
+                </div>
+                <div class="book-left-form">
+                    <p>Họ Tên</p>
+                    @Html.TextBoxFor(n => n.HoTen, new { id = "hoTen" })
+                    <p>Số Điện Thoại</p>
+                    @Html.TextBoxFor(n => n.SoDienThoai, new { id = "soDienThoai" })
+                    <p>Địa Chỉ</p>
+                    @Html.TextBoxFor(n => n.DiaChi, new { id = "diaChi" })
+                    <p>Mật Khẩu</p>
+                    <input type="password" name="MatKhau" id="matKhau" placeholder="Mật Khẩu">
+                    <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
+                    <input type="submit" id="dangKy" class="btn btn-success" value="Cập Nhập">
+                </div>
+            </div>
+            <div class="col-md-6 book-left book-right">
+                <div class="book-left-info">
+                    <h3>Ảnh nhận diện</h3>
+                </div>
+                <div class="book-left-bottom">
+                    <img src="~/Image/anhdaidien.png" width="300" height="300" />
+                    <div class="clearfix">
+                        Dụng lượng file tối đa 1 MB
+                        Định dạng:.JPEG, .PNG
+                    </div>
+                    <input type="file" name="AnhBia" />
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+</div>

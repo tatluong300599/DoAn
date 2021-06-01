@@ -1,0 +1,71 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<DonDatTour>
+@{
+    ViewBag.Title = "ListDonDatTour";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Duyet Don Dat Tour
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Họ Tên Khách</th>
+                        <th>Tên Tour</th>
+                        <th>Ngày XP</th>
+                        <th>Đặt Chỗ</th>
+                        <th>Số Lượng Còn</th>
+                        <th>Thành Tiền</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Họ Tên Khách</th>
+                        <th>Tên Tour</th>
+                        <th>Ngày XP</th>
+                        <th>Đặt Chỗ</th>
+                        <th>Số Lượng Còn</th>
+                        <th>Thành Tiền</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KhachHang.HoTen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CTTour.Tour.TenTour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayXP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoLuongKhach)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CTTour.SoLuongCho)
+                            </td>
+                            <td>
+                                @string.Format("{0:0,0}",item.ThanhTien) VND
+                            </td>
+                            <td>
+                                @Html.ActionLink("Duyet", "DuyetDon", new { maDon = item.MaDon, maTour = item.MaTour, ngayXP = item.NgayXP, soLuong = item.SoLuongKhach, kh = item.KhachHang }, new { @class = "btn btn-success" })|
+                                @Html.ActionLink("Chi tiet", "ChiTietDonDatTour", new { maDon = item.MaDon }, new { @class = "btn btn-primary" })|
+                                @Html.ActionLink("Xoa", "XoaDonDat", new { maDon = item.MaDon }, new { @class = "btn btn-danger" })|
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

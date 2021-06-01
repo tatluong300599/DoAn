@@ -1,0 +1,105 @@
+﻿@using DoAnDuLich.Models
+@model IEnumerable<LienHe>
+@{
+    ViewBag.Title = "DanhSachChuaLienHe";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý liên hệ khách hàng</h2>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ThoiGian)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoTen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoDienThoai)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiaChi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TrangThai)
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ThoiGian)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoTen)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoDienThoai)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoiDung)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiaChi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TrangThai)
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ThoiGian)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoTen)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoDienThoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoiDung)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiaChi)
+                            </td>
+                            @if (item.TrangThai == true)
+                            {
+                                <td>
+                                    <a>Đã Liên Hệ</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.ActionLink("Chưa liên hệ","DaLienHe","QLLienHes",new {maLienHe=item.MaLienHe },new {@class="btn btn-success" })
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

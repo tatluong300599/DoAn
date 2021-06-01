@@ -1,0 +1,132 @@
+﻿@model DoAnDuLich.Models.Tour
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiThieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiThieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuongTrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuongTrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anh2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoNgay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoNgay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotDanhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotDanhGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiemDen.TenDiemDen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiemDen.TenDiemDen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiemXP.TenDiemXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiemXP.TenDiemXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiTour.TenLoaiTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTour.TenLoaiTour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTour },new {@class="btn btn-success" }) |
+    @Html.ActionLink("Chi Tiet", "ChiTiet", new { maTour = Model.MaTour }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Trở về", "Index",new { },new {@class="btn btn-primary" })
+</p>

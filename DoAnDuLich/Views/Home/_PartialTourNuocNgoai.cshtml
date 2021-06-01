@@ -1,0 +1,20 @@
+﻿@using DoAnDuLich.Models
+@model Tour
+<div class="banner-bottom-middle">
+    <a href="@Url.Action("ChiTietTour","Tour",new {maTour=Model.MaTour })">
+        <img src="~/Image/@Model.Anh" alt="" />
+        <div class="destinations-grid-info tours">
+            <h5>@Model.TenTour</h5>
+            @if (Model.GioiThieu.Length < 30)
+            {
+                <p>@Model.GioiThieu</p>
+            }
+            else
+            {
+                <p>@Model.GioiThieu.Substring(0, 27) ...</p>
+            }
+
+        </div>
+    </a>
+</div>
+

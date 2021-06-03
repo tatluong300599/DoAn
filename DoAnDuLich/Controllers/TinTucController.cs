@@ -43,5 +43,9 @@ namespace DoAnDuLich.Controllers
             var loaiTins = db.LoaiTinTucs;
             return PartialView(loaiTins);
         }
+        public ActionResult TinTucHT()
+        {
+            return View();
+        }
     }
 }

@@ -68,6 +68,10 @@ namespace DoAnDuLich.Controllers
             }
             
         }
+        public int diemDen()
+        {
+            return 1;
+        }
 
         #region Hien Thi Home
         public ActionResult _PartialTourTrongNuoc()
